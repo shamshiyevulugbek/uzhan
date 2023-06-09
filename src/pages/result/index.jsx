@@ -35,7 +35,7 @@ export const Result = () => {
             }
           </div>
           <div className={s.total}>
-            Total: <span style={{color:"gold"}}>{total.length}</span>, Correct answers: <span style={{color:"green"}}>{resolved.length}</span> <br/> Result: <span style={{color:"red"}}>{(resolved.length/total.length).toFixed(2)} %</span>
+            Total: <span style={{color:"gold"}}>{total.length}</span>, Correct answers: <span style={{color:"green"}}>{resolved.length}</span> <br/> Result: <span style={{color:"red"}}>{(resolved.length*100/total.length).toFixed(2)} %</span>
           </div>
           <div className={s.buttonContainer}>
             <Button size="large" className={s.button} type="primary" onClick={()=>{
