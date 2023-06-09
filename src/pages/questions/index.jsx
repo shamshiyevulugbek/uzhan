@@ -5,6 +5,7 @@ import {MainSlice} from "../../components/mainSlice"
 import {Timer} from "../../components/timer"
 import {Container} from "../../components/container"
 import {Button} from "antd"
+import s from "./questions.module.scss" 
 
 export const Questions = () => {
   const [search] = useSearchParams()
@@ -19,12 +20,13 @@ export const Questions = () => {
     return <Loader/>
   }
     return (
-      <div>
+      <div className={s.questions}>
         <Container>
+          <h2 className={s.title}>Questions</h2>
           <MainSlice questions={q.data.results}/>
           <Timer minutes={amount}/>
-          <div>
-            <Button type={"primary"} onClick={()=>nav("/result")}>
+          <div className={s.buttonContainer}>
+            <Button className={s.button} size="large" type={"primary"} onClick={()=>nav("/result")}>
               Finish
             </Button>
           </div>

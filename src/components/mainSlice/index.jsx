@@ -4,11 +4,12 @@ import {Pagination} from "antd"
 
 export const MainSlice = ({questions}) => {
     const [index,setIndex] = useState(0)
-    // console.log(questions,"questions")
   return (
-    <div>
+    <div style={{marginBottom:30}}>
         <Question index={index} question={questions[index]}/>
-        <Pagination onChange={(page)=>setIndex(page-1)} showSizeChanger={false} total={questions.length} defaultPageSize={1}/>
+        <div style={{textAlign:"center"}}>
+          <Pagination onChange={(page)=>setIndex(page-1)} showSizeChanger={false} total={questions.length} defaultPageSize={1}/>
+        </div>
     </div>
   )
 }

@@ -18,8 +18,8 @@ export const Option = ({type,text,selected,isResult,correct}) => {
             break;
     }
   return (
-    <div style={{backgroundColor:(type === selected && !isResult?"green":(isResult && type === selected && selected === correct)?"green":(isResult && type === selected && selected !== correct)?"red":(isResult && type !== selected && type === correct)?"yellow":"white")}}>
-        {letter} - {atob(text)}
+    <div cls style={{padding:"3px 5px",backgroundColor:(type === selected && !isResult?"green":(isResult && type === selected && selected === correct)?"green":(isResult && type === selected && selected !== correct)?"red":(isResult && type !== selected && type === correct)?"yellow":"white")}}>
+        <span style={{fontWeight:600}}>{letter}</span> - {atob(text)}
     </div>
   )
 }

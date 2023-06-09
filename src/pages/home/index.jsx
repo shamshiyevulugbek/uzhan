@@ -5,6 +5,7 @@ import {Loader} from "../../components/loader"
 import {Container} from "../../components/container"
 import { useState,useContext } from "react"
 import {CorrectAnswersContext} from "../../context/correctAnswers"
+import s from "./home.module.scss"
 
 export const Home = () => {
   const {setCorrectAnswers} = useContext(CorrectAnswersContext)
@@ -16,15 +17,18 @@ export const Home = () => {
     return <Loader/>
   }
   return (
-    <div>
+    <div className={s.home}>
       <Container>
-        <div>
-          <Select onChange={(v)=>setId(v)} defaultValue={q.data.trivia_categories[0].id} options={q.data.trivia_categories.map(c=>({label:c.name,value:c.id}))}/>
-          <Select onChange={(v)=>setNumber(v)} defaultValue={1} options={Array.from(Array(50)).map((_,i)=>({label:`${i+1}`,value:i+1}))}/>
+        <h1 className={s.title}>Welcome to UZHAN quizzes</h1>
+        <h2 className={s.title2}>Select a category and number of questions</h2>
+        <div className={s.selects}>
+          <Select size="large" onChange={(v)=>setId(v)} defaultValue={q.data.trivia_categories[0].id} options={q.data.trivia_categories.map(c=>({label:c.name,value:c.id}))}/>
+
+          <Select size="large" onChange={(v)=>setNumber(v)} defaultValue={1} options={Array.from(Array(50)).map((_,i)=>({label:`${i+1}`,value:i+1}))}/>
         </div>
 
-        <div style={{marginTop:50,textAlign:"center"}}>
-          <Button type={"primary"} onClick={()=>{
+        <div className={s.buttonContainer}>
+          <Button size="large" className={s.button} type={"primary"} onClick={()=>{
               nav(`/questions?category=${id}&number=${number}`)
               setCorrectAnswers({type:"answers",payload:number-1})
             }

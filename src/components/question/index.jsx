@@ -8,15 +8,14 @@ import {Option} from "../option"
 export const Question = ({index,question,isResult=false}) => {
     const {answers,setAnswers} = useContext(AnswersContext)
     const {correctAnswers} = useContext(CorrectAnswersContext)
-    // console.log("Question render")
     const makeOptions = (incArr,correctA,i)=>{
       incArr.splice(i,0,correctA)
       return incArr
     }
   return (
-    <div className={s.question}>
-        <p>Question {index+1}: {atob(question.question)}</p>
-        <div>
+    <div style={{minHeight:(!isResult && 200)}} className={s.question}>
+        <p className={s.quizz}>Question {index+1}: {atob(question.question)}</p>
+        <div style={{marginBottom:10}}>
           {
             makeOptions([...question.incorrect_answers],question.correct_answer,correctAnswers[index]).map((v,c)=><Option key={c} isResult={isResult} selected={answers[index]} correct={correctAnswers[index]} text={v} type={c}/>)
           }

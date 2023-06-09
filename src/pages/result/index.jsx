@@ -6,6 +6,7 @@ import {CorrectAnswersContext} from "../../context/correctAnswers"
 import {AnswersContext} from "../../context/answers"
 import {useNavigate} from "react-router-dom"
 import { Button } from "antd"
+import s from "./result.module.scss"
 
 export const Result = () => {
   const nav = useNavigate()
@@ -22,9 +23,9 @@ export const Result = () => {
     }
   },[setCorrectAnswers,setAnswers,nav])
     return (
-      <div>
+      <div className={s.result}>
         <Container>
-          <h2>Results</h2>
+          <h2 className={s.title}>Results</h2>
           <div>
             {
               questions.map((v,i)=>{
@@ -33,11 +34,11 @@ export const Result = () => {
               })
             }
           </div>
-          <div>
-            Total: {total.length}, resolved: {resolved.length}
+          <div className={s.total}>
+            Total: {total.length}, Correct answers: {resolved.length}
           </div>
-          <div>
-            <Button type="primary" onClick={()=>{
+          <div className={s.buttonContainer}>
+            <Button size="large" className={s.button} type="primary" onClick={()=>{
               nav("/")
               setAnswers({type:"clear"})
               setCorrectAnswers({type:"clear"})
